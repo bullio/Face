@@ -7,7 +7,6 @@ import numpy as np
 from multiprocessing import Process,Lock,Queue
 from wide_resnet import WideResNet
 
-
 class Buffer(object):
     """
     store the recent n frame's result:
@@ -23,6 +22,7 @@ class Buffer(object):
         self.query_cnt = 0
     
     def write(self,result):
+        # write the result into buffer
         if len(self.bf) == self.n:
             self.bf.pop(0)
         self.bf.append(result)
